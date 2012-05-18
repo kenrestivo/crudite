@@ -1,4 +1,4 @@
 crudite
 =======
 
-A set of CRUD macros for Noir in Clojure
+A set of CRUD form macros for Noir in Clojure
