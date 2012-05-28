@@ -32,10 +32,10 @@
    
    ;; list-page takes a field map (pagination, not save fields),
    ;; and returns the formatted item listing
-   :list-page (fn [fields] (html [:ul [:li "items" ]]))
+   :list-page (fn [fields] [:ul [:li "items" ]])
    
    ;; format-view is the view (for one record), takes a field map, returns hiccup
-   :format-view (fn [fields] (html [:p (str fields)]))
+   :format-view (fn [fields] [:p (str fields)])
    
    ;; form-valid? is the validation rules, takes field map, returns true/false
    :form-valid? (constantly true)
