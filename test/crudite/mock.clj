@@ -9,6 +9,8 @@
 (client/get "http://localhost:8081/thing/add"))
 (client/get "http://localhost:8081/things"))
 (client/get "http://localhost:8081/welcome"))
-(client/post "http://localhost:8081/thing/1/update" {:form-params {:foo "bar" :baz "quuz"}}))
-(client/post "http://localhost:8081/thing/add" {:form-params {:foo "bar" :baz "quuz"}}))
+(client/post "http://localhost:8081/thing/1/update"
+             {:form-params {:foo "bar" :baz "quuz"}}))
+(client/post "http://localhost:8081/thing/add"
+             {:form-params {:foo "bar" :baz "quuz"}}))
 
