@@ -1,0 +1,12 @@
+TODO for crudite
+
+* TODO now try with some actual forms and mock app
+* TODO build in some kind of test harness!
+** at first, just a no-500 test for the scaffolding and macro stuff
+** then check for valid output given some well-defined input
+** how can i integrate a mock noir server for testing? 
+*** as a sub-project?
+* TODO form field security!
+** map of fields allowed for user realm for update/add/etc
+*** have a look at how some other frameworks do this.
+*** make it composable and clojure-like though! try to be un-monolithic.
