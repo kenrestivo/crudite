@@ -1,5 +1,7 @@
 TODO for crudite
 
+* TODO #{set} for which routes to make!
+** overridable
 * TODO now try with some actual forms and mock app
 * TODO build in some kind of test harness!
 ** at first, just a no-500 test for the scaffolding and macro stuff

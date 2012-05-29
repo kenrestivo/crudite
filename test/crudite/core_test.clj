@@ -10,3 +10,6 @@
 (deftest get-fubarbaz
   (defpage-hack  (str "/fubar" "/baz")  {:as fields} fields)
   (is (= GET--fubar--baz (:GET--fubar--baz @noir.core/route-funcs))))
+
+
+

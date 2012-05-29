@@ -32,23 +32,23 @@
    
    ;; list-page takes a field map (pagination, not save fields),
    ;; and returns the formatted item listing
-   :list-page (fn [fields] (html [:ul [:li "items" ]]))
+   :list-page (fn [fields] [:ul [:li "items" ]])
    
    ;; format-view is the view (for one record), takes a field map, returns hiccup
-   :format-view (fn [fields] (html [:p (str fields)]))
+   :format-view (fn [fields] [:p (str fields)])
    
    ;; form-valid? is the validation rules, takes field map, returns true/false
    :form-valid? (constantly true)
    
-   ;;; buttons to use
+;;; buttons to use
    :edit-button   widgets/link-button
    :add-button widgets/link-button
    :save-button submit-button
    
    ;; wrap-layout: takes {:title :content} and returns formatted body in a  ring map
    :wrap-layout (fn [{:keys [title content]}]
-                     (html [:head [:title title]]
-                           [:body [:div content]]))
+                  (html [:head [:title title]]
+                        [:body [:div content]]))
                                    
 
    ;; form-opts: additional form opts, like multipart-binary, etc
@@ -56,6 +56,9 @@
 
    ;; save-func: takes a field map and saves it. 
    :save-func (fn [fields] true)
+
+   ;; these are the routes to make. override this to take some out.
+   :to-build #{:list-all :get-view-one :get-add :post-add :get-edit :post-update}
    })
 
 
@@ -66,16 +69,19 @@
  
 
 
-;;; TODO: maybe do some sanity checking here?
-;;; view-url must have trailing /
-;;; list-url must not be same as view-url minus slash!
-;;; form-opts must be a map
 (defn sanity-check
   [fst]
-  true)
+  (when-not (map? (:form-opts fst)) 
+    (throw (Exception. ":form-opts must be a map")))
+  (when-not (.endsWith (:view-url fst) "/") 
+    (throw (Exception. ":view-url must have trailing slash")))
+  (when (.startsWith  (:view-url fst) (:list-url fst))
+    (throw (Exception. ":list-url must not be same as :view-url minus slash")))
+  fst)
+  
   
 
 ;; TODO: call sanity czech
 (defn merge-fsettings
   [fst]
-  (merge defaults fst))
+  (sanity-check (merge defaults fst)))
