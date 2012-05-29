@@ -40,7 +40,7 @@
    ;; form-valid? is the validation rules, takes field map, returns true/false
    :form-valid? (constantly true)
    
-;;; buttons to use
+   ;; buttons to use
    :edit-button   widgets/link-button
    :add-button widgets/link-button
    :save-button submit-button
