@@ -1,7 +1,7 @@
 (ns crudite.actions
   (:use
-    [crudite.components :only [make-form save-and-redirect]]
-    [noir.core :only [render]]))
+   [crudite.components :only [make-form save-and-redirect]]
+   [noir.core :only [render]]))
 
 
 (defn add-post-action
@@ -42,9 +42,10 @@
      {:title  (str "View " (:title-singular fst))
       :content [:div
                 ((:format-view fst) fields)
-                ((:edit-button fst)
-                 (str (:view-url fst)
-                      id "/edit") "Edit")]})
+                (when ((:edit-auth? fst) fields)
+                  ((:edit-button fst)
+                   (str (:view-url fst)
+                        id "/edit") "Edit"))]})
     {:status 404 :body nil}))
 
 
@@ -54,7 +55,8 @@
    {:title  (:title fst)
     :content [:div
               ((:list-page fst) fields)
-              ((:add-button fst)
-               (str (:view-url fst) "add")
-               (str "Add " (:title-singular fst)))]}))
+              (when ((:add-auth? fst) fields)
+                ((:add-button fst)
+                 (str (:view-url fst) "add")
+                 (str "Add " (:title-singular fst))))]}))
 

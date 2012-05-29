@@ -56,6 +56,13 @@
 
    ;; save-func: takes a field map and saves it. 
    :save-func (fn [fields] true)
+   
+   ;;; predicate to decide whether to show the add button
+   :add-auth? (fn [fields] true)
+   
+
+   ;;; predicate to decide whether to show the edit button
+   :edit-auth? (fn [fields] true)
 
    ;; these are the routes to make. override this to take some out.
    :to-build #{:list-all :get-view-one :get-add :post-add :get-edit :post-update}
@@ -71,6 +78,10 @@
 
 (defn sanity-check
   [fst]
+  (when-not (fn? (:edit-auth? fst))
+    (throw (Exception. ":edit-auth? must be a function with 1 arg")))
+  (when-not (fn? (:add-auth? fst))
+    (throw (Exception. ":add-auth? must be a function with 1 arg")))
   (when-not (map? (:form-opts fst)) 
     (throw (Exception. ":form-opts must be a map")))
   (when-not (.endsWith (:view-url fst) "/") 
