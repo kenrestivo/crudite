@@ -21,31 +21,31 @@
     `(do
        
        ;; the list  of all the items
-       (defpage ~list-all  {:as fields5#}
+       (noir.core/defpage ~list-all  {:as fields5#}
          (actions/list-all-action ~fst fields5#))
        
        
        ;; the view one page
-       (defpage ~get-view-one {:as fields4#}
+       (noir.core/defpage ~get-view-one {:as fields4#}
          (actions/view-one-action ~fst fields4#))
        
        
        ;; the edit page
-       (defpage ~get-edit  {:as fields3#}
+       (noir.core/defpage ~get-edit  {:as fields3#}
          (actions/edit-get-action ~fst fields3#))
 
        
        ;; the add page
-       (defpage ~get-add   {:as fields2#}
+       (noir.core/defpage ~get-add   {:as fields2#}
          (actions/add-get-action ~fst fields2#))
 
        
        ;; the UPDATE action return value  
-       (defpage ~post-update   {:as fields1#}
+       (noir.core/defpage ~post-update   {:as fields1#}
          (actions/update-post-action ~fst fields1#))
        
        ;; the ADD action return value
-       (defpage ~post-add   {:as fields#}
+       (noir.core/defpage ~post-add   {:as fields#}
          (actions/add-post-action ~fst fields#)))))
 
 
