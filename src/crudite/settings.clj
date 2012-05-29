@@ -75,7 +75,7 @@
     (throw (Exception. ":form-opts must be a map")))
   (when-not (.endsWith (:view-url fst) "/") 
     (throw (Exception. ":view-url must have trailing slash")))
-  (when (.startsWith (:list-url fst) (:view-url fst))
+  (when (.startsWith  (:view-url fst) (:list-url fst))
     (throw (Exception. ":list-url must not be same as :view-url minus slash")))
   fst)
   
