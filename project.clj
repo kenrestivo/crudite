@@ -7,7 +7,8 @@
                  [noir "1.3.0-beta7"]]
   :dev-dependencies [[clj-http "0.4.1"] ;; needs to be explicit!?
                      [com.cemerick/url "0.0.6"]
+                     [firealarm  "0.1.0-SNAPSHOT"]
                      ]
   :profiles {:dev {:dependencies [[clj-http "0.4.1"] ;; needs to be explicit!?
-                                  ]}})
+                                  [firealarm  "0.1.0-SNAPSHOT"]]}})
 
