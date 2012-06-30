@@ -19,7 +19,7 @@ However, there is a lot to do still and a great deal I want to add.
 With Lein, add to your project.clj:
 
 ```clojure
-[crudite "0.1.0"]
+[crudite "0.1.1"]
 ```
 
 ## Usage
