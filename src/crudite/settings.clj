@@ -17,7 +17,7 @@
 
 
 ;;; this will go into the views themselves
-;;; core here will merge the map
+;; core here will merge the map
 (def defaults
   {:list-url "/things"
    :view-url "/thing/"
@@ -42,6 +42,7 @@
    
    ;; buttons to use
    :edit-button   widgets/link-button
+   :delete-button   widgets/link-button
    :add-button widgets/link-button
    :save-button submit-button
    
@@ -57,11 +58,17 @@
    ;; save-func: takes a field map and saves it. 
    :save-func (fn [fields] true)
    
-   ;;; predicate to decide whether to show the add button
+   ;; delete-func: takes a field map and deletes it,
+   ;; returns the field map of what was deleted (so it can flash).
+   :delete-func (fn [id] {:_id id})
+   
+   ;; predicate to decide whether to show the add button
    :add-auth? (fn [fields] true)
    
+   ;; predicate to decide whether to show the delete button
+   :delete-auth? (fn [fields] true)
 
-   ;;; predicate to decide whether to show the edit button
+   ;; predicate to decide whether to show the edit button
    :edit-auth? (fn [fields] true)
 
    ;; these are the routes to make. override this to take some out.

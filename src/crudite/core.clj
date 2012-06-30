@@ -16,6 +16,7 @@
         post-add (eval `[:post  (str (get-merged  ~fst :view-url) "add")])
         get-add (eval `(str (get-merged ~fst :view-url) "add"))
         get-edit (eval `(str (get-merged ~fst :view-url) ":id/edit"))
+        delete (eval `(str (get-merged ~fst :view-url) ":id/delete"))
         get-view-one (eval `(str (get-merged ~fst :view-url) ":id"))
         list-all (eval `(get-merged ~fst :list-url))]
     `(do
@@ -46,7 +47,11 @@
        
        ;; the ADD action return value
        (noir.core/defpage ~post-add   {:as fields#}
-         (actions/add-post-action ~fst fields#)))))
+         (actions/add-post-action ~fst fields#))
+
+       (noir.core/defpage ~delete   {:as fields6#}
+         (actions/delete-action ~fst fields6#)))))
+       
 
 
 

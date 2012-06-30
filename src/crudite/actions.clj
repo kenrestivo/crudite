@@ -1,6 +1,6 @@
 (ns crudite.actions
   (:use
-   [crudite.components :only [make-form save-and-redirect]]
+   [crudite.components :only [make-form save-and-redirect delete-and-redirect]]
    [noir.core :only [render]]))
 
 
@@ -45,8 +45,17 @@
                 (when ((:edit-auth? fst) fields)
                   ((:edit-button fst)
                    (str (:view-url fst)
-                        id "/edit") "Edit"))]})
+                        id "/edit") "Edit"))
+                (when ((:delete-auth? fst) fields)
+                  ((:delete-button fst)
+                   (str (:view-url fst)
+                        id "/delete") "Delete"))]})
     {:status 404 :body nil}))
+
+
+(defn delete-action
+  [fst {:keys [id]}]
+  (delete-and-redirect fst id))
 
 
 (defn list-all-action

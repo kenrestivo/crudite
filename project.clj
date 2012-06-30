@@ -1,4 +1,4 @@
-(defproject crudite "0.1.0"
+(defproject crudite "0.1.1"
   :description "A CRUD form generator for Noir"
   :url "http://github.com/kenrestivo/crudite"
   :license {:name "Eclipse Public License"

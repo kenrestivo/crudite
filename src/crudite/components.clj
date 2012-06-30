@@ -4,6 +4,8 @@
             [noir.session :as session]))
 
 
+;; XXX TODO! NOTE! :name is not generic! i need a fst with the display name to use
+
 (defn save-and-redirect
   "Does the mechanics of saving/redirecting. Common to both add and update"
   [fst fields update?]
@@ -29,3 +31,10 @@
       ((:save-button fst) actionname)])))
 
 
+(defn delete-and-redirect
+  "Does the mechanics of deleting/redirecting."
+  [fst id]
+  (let [fields ((:delete-func fst) id)]
+    (session/flash-put! :status
+                        (str (:title fst) " " (:name fields) " Deleted!"))
+    (response/redirect (:list-url fst))))
